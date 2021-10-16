@@ -18,7 +18,8 @@ function addR() {
     row.appendChild(col); //if there is no existing row, append one with one col
     grid.appendChild(row);
   } else {
-    console.log(prevRow.cells.length);
+    var documentFragment = document.createDocumentFragment();
+    documentFragment.appendChild(row);
     for (let i = 0; i < prevRow.cells.length; i++) {
       //otherwise append a row after appending the same # col as prev row
       row.appendChild(col);
@@ -27,7 +28,7 @@ function addR() {
         this.style.backgroundColor = colorSelected;
       };
     }
-    grid.appendChild(row);
+    grid.appendChild(documentFragment);
   }
 }
 //Add a column
