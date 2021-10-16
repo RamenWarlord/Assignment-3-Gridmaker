@@ -83,5 +83,9 @@ function clearAll() {
 }
 
 function fillU() {
-  alert("Clicked Fill All Uncolored");
+  const boxes = document.querySelectorAll("td");
+  boxes.forEach(function (box) {
+    if (box.style.backgroundColor == "white" || box.style.backgroundColor == "")
+      box.style.backgroundColor = colorSelected;
+  });
 }
