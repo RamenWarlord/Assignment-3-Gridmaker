@@ -76,7 +76,10 @@ function fill() {
 }
 
 function clearAll() {
-  alert("Clicked Clear All");
+  const boxes = document.querySelectorAll("td");
+  boxes.forEach(function (box) {
+    box.style.backgroundColor = "white";
+  });
 }
 
 function fillU() {
