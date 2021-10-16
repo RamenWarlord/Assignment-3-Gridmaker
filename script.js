@@ -44,7 +44,11 @@ function addC() {
 
 //Remove a row
 function removeR() {
-  alert("Clicked Remove Row");
+  if (numRows > 0) {
+    numRows--;
+    let lastRow = document.getElementById("grid").lastElementChild;
+    lastRow.remove();
+  }
 }
 //Remove a column
 function removeC() {
