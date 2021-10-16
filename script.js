@@ -9,18 +9,26 @@ function addR() {
   let prevRow = grid.lastElementChild; //get the last row of the grid
   let row = document.createElement("tr"); //create a row
   let col = document.createElement("td"); //create a col
+  col.onclick = function () {
+    this.style.backgroundColor = colorSelected;
+  };
+  console.log(col);
   if (prevRow == null) {
     numCols++;
     row.appendChild(col); //if there is no existing row, append one with one col
     grid.appendChild(row);
   } else {
-    console.log(prevRow.cells.length);
+    var documentFragment = document.createDocumentFragment();
+    documentFragment.appendChild(row);
     for (let i = 0; i < prevRow.cells.length; i++) {
       //otherwise append a row after appending the same # col as prev row
       row.appendChild(col);
       col = document.createElement("td"); //create new node after appending prev
+      col.onclick = function () {
+        this.style.backgroundColor = colorSelected;
+      };
     }
-    grid.appendChild(row);
+    grid.appendChild(documentFragment);
   }
 }
 //Add a column
@@ -28,6 +36,9 @@ function addC() {
   numCols++;
   const rowList = document.querySelectorAll("tr");
   let col = document.createElement("td"); //create a col
+  col.onclick = function () {
+    this.style.backgroundColor = colorSelected;
+  };
   if (rowList.length === 0) {
     numRows++;
     let row = document.createElement("tr"); //create a row
@@ -37,6 +48,9 @@ function addC() {
     rowList.forEach(function (row) {
       row.appendChild(col);
       col = document.createElement("td");
+      col.onclick = function () {
+        this.style.backgroundColor = colorSelected;
+      };
     });
   }
 }
