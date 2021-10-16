@@ -27,7 +27,6 @@ function addR() {
 function addC() {
   numCols++;
   const rowList = document.querySelectorAll("tr");
-  console.log(rowList);
   let col = document.createElement("td"); //create a col
   if (rowList.length === 0) {
     numRows++;
@@ -52,7 +51,16 @@ function removeR() {
 }
 //Remove a column
 function removeC() {
-  alert("Clicked Remove Col");
+  if (numCols > 0) {
+    numCols--;
+    const rowList = document.querySelectorAll("tr");
+    for (let i = 0; i < rowList.length; i++) {
+      let row = rowList[i];
+      let col = row.lastElementChild;
+      col.remove();
+      if (row.cells.length === 0) row.remove();
+    }
+  }
 }
 //sets global var for selected color
 function selected() {
