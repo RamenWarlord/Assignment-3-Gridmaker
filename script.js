@@ -10,19 +10,36 @@ function addR() {
   let row = document.createElement("tr"); //create a row
   let col = document.createElement("td"); //create a col
   if (prevRow == null) {
+    numCols++;
     row.appendChild(col); //if there is no existing row, append one with one col
     grid.appendChild(row);
   } else {
+    console.log(prevRow.cells.length);
     for (let i = 0; i < prevRow.cells.length; i++) {
       //otherwise append a row after appending the same # col as prev row
       row.appendChild(col);
+      col = document.createElement("td"); //create new node after appending prev
     }
     grid.appendChild(row);
   }
 }
 //Add a column
 function addC() {
-  alert("Clicked Add Col");
+  numCols++;
+  const rowList = document.querySelectorAll("tr");
+  console.log(rowList);
+  let col = document.createElement("td"); //create a col
+  if (rowList.length === 0) {
+    numRows++;
+    let row = document.createElement("tr"); //create a row
+    row.appendChild(col); //if there is no existing row, append one with one col
+    grid.appendChild(row);
+  } else {
+    rowList.forEach(function (row) {
+      row.appendChild(col);
+      col = document.createElement("td");
+    });
+  }
 }
 
 //Remove a row
