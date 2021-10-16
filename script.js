@@ -69,7 +69,10 @@ function selected() {
 }
 
 function fill() {
-  alert("Clicked Fill All");
+  const boxes = document.querySelectorAll("td");
+  boxes.forEach(function (box) {
+    box.style.backgroundColor = colorSelected;
+  });
 }
 
 function clearAll() {
